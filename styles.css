@@ -1,0 +1,84 @@
+body {
+    background-color: #333;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1,p {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 26px;
+    text-decoration: none;
+}
+
+.about-section {
+    text-align: left;
+    margin: 40px 20px;
+}
+
+.about-section h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.about-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.video-section {
+    text-align: left;
+    margin: 40px 20px 20px 20px;
+}
+
+.video-container {
+    margin-top: 10px;
+}
+
+.blog-section,
+.project-section,
+.resume-section{
+    text-align: left;
+    margin: 40px 20px;
+}
+
+.blog-link,
+.project-link,
+.resume-link {
+    display: block;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.blog-image, .resume-image {
+    max-width: 100%;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.project-image {
+    max-width: 100%;
+    max-height: 390px;
+    width: auto;
+    height: auto;
+    transition: transform 0.3s ease, max-height 0.3s ease;
+    transform-origin: center center;
+}
+
+.blog-image:hover,
+.project-image:hover, 
+.resume-image:hover{
+    transform: scale(1.08);
+}
