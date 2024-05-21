@@ -58,7 +58,7 @@ h1, h2, p {
 }
 
 .blog-image {
-    max-width: 80%;
+    max-width: 60%;
     height: auto;
     transition: transform 0.3s ease;
 }
