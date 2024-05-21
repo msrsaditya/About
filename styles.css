@@ -5,7 +5,7 @@ body {
     text-align: center;
 }
 
-h1,p {
+h1, h2, p {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -20,36 +20,33 @@ h1,p {
     text-decoration: none;
 }
 
-.about-section {
+.about-section,
+.blog-section,
+.video-section,
+.project-section,
+.resume-section {
     text-align: left;
     margin: 40px 20px;
 }
 
-.about-section h2 {
+.about-section h2,
+.blog-section h2,
+.video-section h2,
+.project-section h2,
+.resume-section h2 {
     font-size: 28px;
     margin-bottom: 10px;
 }
 
-.about-section p {
+.about-section p,
+.blog-section p {
     font-size: 18px;
     line-height: 1.6;
     margin-bottom: 20px;
 }
 
-.video-section {
-    text-align: left;
-    margin: 40px 20px 20px 20px;
-}
-
 .video-container {
     margin-top: 10px;
-}
-
-.blog-section,
-.project-section,
-.resume-section{
-    text-align: left;
-    margin: 40px 20px;
 }
 
 .blog-link,
@@ -81,4 +78,39 @@ h1,p {
 .project-image:hover, 
 .resume-image:hover{
     transform: scale(1.08);
+}
+
+@media screen and (max-width: 600px) {
+    .social-icons a {
+        font-size: 20px;
+    }
+
+    .about-section,
+    .blog-section,
+    .video-section,
+    .project-section,
+    .resume-section {
+        margin: 20px;
+    }
+
+    .about-section h2,
+    .blog-section h2,
+    .video-section h2,
+    .project-section h2,
+    .resume-section h2 {
+        font-size: 24px;
+    }
+
+    .about-section p,
+    .blog-section p {
+        font-size: 16px;
+    }
+
+    .blog-image, .resume-image {
+        max-height: 150px;
+    }
+
+    .project-image {
+        max-height: 290px;
+    }
 }
