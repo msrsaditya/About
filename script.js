@@ -1,8 +1,6 @@
-// Animated background
 function createBackgroundElements() {
     const container = document.getElementById('background-animation');
     const elementCount = 10;
-
     for (let i = 0; i < elementCount; i++) {
         const element = document.createElement('div');
         element.style.left = Math.random() * 100 + 'vw';
@@ -12,7 +10,6 @@ function createBackgroundElements() {
     }
 }
 
-// Scroll animation
 function handleScroll() {
     const sections = document.querySelectorAll('.section');
     sections.forEach(section => {
@@ -24,7 +21,6 @@ function handleScroll() {
     });
 }
 
-// Initialize
 document.addEventListener('DOMContentLoaded', () => {
     createBackgroundElements();
     handleScroll();

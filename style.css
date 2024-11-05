@@ -214,7 +214,6 @@ a.highlight:hover::after {
     }
 }
 
-/* Animated background effect */
 .background-animation {
     position: absolute;
     top: 0;
