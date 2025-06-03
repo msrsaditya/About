@@ -110,8 +110,8 @@ header::before {
 }
 
 .profile-img {
-    width: 140px;
-    height: 140px;
+    width: 170px;
+    height: 170px;
     border-radius: 50%;
     margin-bottom: var(--spacing-md);
     border: 3px solid var(--accent);
@@ -151,13 +151,23 @@ h1 {
 
 .quote {
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     margin-bottom: var(--spacing-lg);
     font-weight: 400;
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
+    font-style: italic;
+    animation: fadeIn 1.2s ease-out 0.3s both;
+}
+
+.quotetwo {
+    color: var(--text-secondary);
+    font-size: 1.45rem;
+    margin-bottom: var(--spacing-lg);
+    font-weight: 400;
+    max-width: 500px;
     font-style: italic;
     animation: fadeIn 1.2s ease-out 0.3s both;
 }
@@ -179,8 +189,8 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 60px;
+    height: 60px;
     background: linear-gradient(135deg, var(--bg-card) 0%, rgba(31, 31, 31, 0.8) 100%);
     color: var(--text-secondary);
     text-decoration: none;
@@ -314,16 +324,17 @@ h1 {
     border-color: var(--border-hover);
 }
 
-.project-iframe {
+.project-iframe,
+.project-image {
     width: 100%;
     height: 280px;
-    border: none;
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, #151515 100%);
-    transition: var(--transition);
     object-fit: cover;
+    transition: var(--transition);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, #151515 100%);
 }
 
-.project-iframe:hover {
+.project-iframe:hover,
+.project-image:hover {
     transform: scale(1.02);
 }
 
@@ -442,7 +453,8 @@ h1 {
         font-size: 1.1rem;
     }
     
-    .project-iframe {
+    .project-iframe,
+    .project-image {
         height: 240px;
     }
 }
@@ -473,7 +485,8 @@ h1 {
         font-size: 1rem;
     }
     
-    .project-iframe {
+    .project-iframe,
+    .project-image {
         height: 200px;
     }
 }
@@ -494,7 +507,8 @@ h1 {
 }
 
 /* Loading States */
-.project-iframe[src=""] {
+.project-iframe[src=""],
+.project-image[src=""] {
     background: linear-gradient(90deg, var(--bg-secondary) 25%, rgba(255,255,255,0.05) 50%, var(--bg-secondary) 75%);
     background-size: 200% 100%;
     animation: loading 2s infinite;
@@ -503,11 +517,6 @@ h1 {
 @keyframes loading {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
-}
-
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
 }
 
 /* Custom scrollbar */
@@ -550,9 +559,9 @@ html {
 <body>
     <header>
         <div class="profile-container">
-            <img src="https://avatars.githubusercontent.com/u/141167667" alt="Shashank Aditya" class="profile-img">
+            <img src="Images/Profile.avif" alt="Shashank Aditya" class="profile-img">
             <h1>Shashank Aditya</h1>
-            <p class="quote">Part-Time Philosopher. Full-Time Tinkerer. Every Time Weirder.</p>
+            <p class="quote">Hello There! I'm Shashank.</p>
             <div class="social-icons">
                 <a href="mailto:msrsaditya@gmail.com" class="social-icon" title="Email">
                     <i class="fas fa-envelope"></i>
@@ -578,42 +587,91 @@ html {
     <main class="container">
         <section id="projects" class="section">
             <h2 class="section-title">Projects</h2>
+            <p class="quotetwo">Here's everything I've ever built...</p>
             <div class="projects-container">
                 <!-- Editor -->
                 <div class="project-card">
-                    <iframe class="project-iframe" src="https://msrsaditya.github.io/editor" loading="lazy" title="Editor preview"></iframe>
+                    <img
+                        class="project-image"
+                        src="Images/Editor.avif"
+                        alt="Editor preview"
+                    >
                     <div class="project-content">
                         <h3 class="project-title">Editor</h3>
                         <p class="project-description">
-                            Developer friendly python editor and interpreter running in WASM
+                            Python editor running in WASM with minimalistic design and productivity-oriented UX.
                         </p>
                         <div class="project-buttons">
-                            <a href="https://msrsaditya.github.io/editor" target="_blank" class="button">Website</a>
-                            <a href="https://github.com/msrsaditya/editor" target="_blank" class="button">Code</a>
+                            <a href="https://msrsaditya.github.io/Editor" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/Editor" target="_blank" class="button">Code</a>
                         </div>
                     </div>
                 </div>
-                <!-- Live Markdown Preview -->
+                <!-- Image Converter -->
                 <div class="project-card">
-                    <iframe class="project-iframe" src="https://msrsaditya.github.io/livemarkdownpreview" loading="lazy" title="Live Markdown Preview"></iframe>
+                    <img
+                        class="project-image"
+                        src="Images/Image-Converter.avif"
+                        alt="Image Converter Preview"
+                    >
                     <div class="project-content">
-                        <h3 class="project-title">Live Markdown Preview</h3>
+                        <h3 class="project-title">Image Converter</h3>
                         <p class="project-description">
-                            Real-time Markdown editor preview
+                            Convert your images to any format with perfect quality.
                         </p>
                         <div class="project-buttons">
-                            <a href="https://msrsaditya.github.io/livemarkdownpreview" target="_blank" class="button">Website</a>
-                            <a href="https://github.com/msrsaditya/livemarkdownpreview" target="_blank" class="button">Code</a>
+                            <a href="https://msrsaditya.github.io/Image-Converter" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/Image-Converter" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- HTML Live Preview -->
+                <div class="project-card">
+                    <img
+                        class="project-image"
+                        src="Images/HTML-Live-Preview.avif"
+                        alt="HTML Live Preview"
+                    >
+                    <div class="project-content">
+                        <h3 class="project-title">HTML Live Preview</h3>
+                        <p class="project-description">
+                            Get preview of your HTML code in real-time.
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://msrsaditya.github.io/HTML-Live-Preview" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/HTML-Live-Preview" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Markdown Live Preview -->
+                <div class="project-card">
+                    <img
+                        class="project-image"
+                        src="Images/LiveMarkdownPreview.avif"
+                        alt="Live Markdown Preview"
+                    >
+                    <div class="project-content">
+                        <h3 class="project-title">Markdown Live Preview</h3>
+                        <p class="project-description">
+                            Get preview of your Markdown code in real-time.
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://msrsaditya.github.io/Markdown-Live-Preview" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/Markdown-Live-Preview" target="_blank" class="button">Code</a>
                         </div>
                     </div>
                 </div>
                 <!-- Mermaid Visualizer -->
                 <div class="project-card">
-                    <iframe class="project-iframe" src="https://msrsaditya.github.io/Mermaid-Visualizer" loading="lazy" title="Mermaid Visualizer"></iframe>
+                    <img
+                        class="project-image"
+                        src="Images/MermaidVisualizer.avif"
+                        alt="Mermaid Visualizer"
+                    >
                     <div class="project-content">
                         <h3 class="project-title">Mermaid Visualizer</h3>
                         <p class="project-description">
-                            Easy way to visualize and download Mermaid diagrams as SVG
+                            Visualize and download your mermaid diagrams easily.
                         </p>
                         <div class="project-buttons">
                             <a href="https://msrsaditya.github.io/Mermaid-Visualizer" target="_blank" class="button">Website</a>
@@ -621,41 +679,17 @@ html {
                         </div>
                     </div>
                 </div>
-                <!-- Browser Privacy -->
+                <!-- Distro Meter -->
                 <div class="project-card">
-                    <iframe class="project-iframe" src="https://msrsaditya.github.io/BrowserPrivacy" loading="lazy" title="Browser Privacy"></iframe>
-                    <div class="project-content">
-                        <h3 class="project-title">Browser Privacy</h3>
-                        <p class="project-description">
-                            Browser ranking based on their privacy and security (source: privacytests.org)
-                        </p>
-                        <div class="project-buttons">
-                            <a href="https://msrsaditya.github.io/BrowserPrivacy" target="_blank" class="button">Website</a>
-                            <a href="https://github.com/msrsaditya/BrowserPrivacy" target="_blank" class="button">Code</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Blog -->
-                <div class="project-card">
-                    <iframe class="project-iframe" src="https://msrsaditya.github.io/blog" loading="lazy" title="Blog"></iframe>
-                    <div class="project-content">
-                        <h3 class="project-title">Blog</h3>
-                        <p class="project-description">
-                            Personal blog to share stories
-                        </p>
-                        <div class="project-buttons">
-                            <a href="https://msrsaditya.github.io/blog" target="_blank" class="button">Website</a>
-                            <a href="https://github.com/msrsaditya/blog" target="_blank" class="button">Code</a>
-                        </div>
-                    </div>
-                </div>
-               <!-- Distro Meter -->
-                <div class="project-card">
-                    <img class="project-iframe" src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Distro Meter preview">
+                    <img
+                        class="project-image"
+                        src="Images/Linux.avif"
+                        alt="Distro Meter Preview"
+                    >
                     <div class="project-content">
                         <h3 class="project-title">Distro Meter</h3>
                         <p class="project-description">
-                            Data analysis and insights on Linux distro's subreddit popularity
+                            Data analysis and insights on Linux distribution's subreddit statistics.
                         </p>
                         <div class="project-buttons">
                             <a href="https://distrometer.streamlit.app" target="_blank" class="button">Website</a>
@@ -665,39 +699,103 @@ html {
                 </div>
                 <!-- Local Transfer -->
                 <div class="project-card">
-                    <img class="project-iframe" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Netcat.png" alt="Local Transfer preview">
+                    <img
+                        class="project-image"
+                        src="Images/LocalTransfer.avif"
+                        alt="Local Transfer Preview"
+                    >
                     <div class="project-content">
                         <h3 class="project-title">Local Transfer</h3>
                         <p class="project-description">
-                            Fast and efficient netcat based raw TCP file transfer
+                            The simplest way to transfer your files over a local network wirelessly.
                         </p>
                         <div class="project-buttons">
-                            <a href="https://github.com/msrsaditya/Local-Transfer" target="_blank" class="button">Website</a>
                             <a href="https://github.com/msrsaditya/Local-Transfer" target="_blank" class="button">Code</a>
                         </div>
                     </div>
                 </div>
-                <!-- JNTU Calculator -->
+                <!-- TrueCaller CLI -->
                 <div class="project-card">
-                    <iframe class="project-iframe" src="https://msrsaditya.github.io/JNTU-Calc" loading="lazy" title="JNTU Calculator"></iframe>
+                    <img
+                        class="project-image"
+                        src="Images/TrueCallerCLI.avif"
+                        alt="TrueCaller CLI Preview"
+                    >
                     <div class="project-content">
-                        <h3 class="project-title">JNTU Calculator</h3>
+                        <h3 class="project-title">TrueCaller CLI</h3>
                         <p class="project-description">
-                            JNTU college CGPA and percentage calculator
+                            TrueCaller on the command line.
                         </p>
                         <div class="project-buttons">
-                            <a href="https://msrsaditya.github.io/JNTU-Calc" target="_blank" class="button">Website</a>
-                            <a href="https://github.com/msrsaditya/JNTU-Calc" target="_blank" class="button">Code</a>
+                            <a href="https://github.com/msrsaditya/SimpleScripts/blob/main/truecaller.py" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Browser Privacy -->
+                <div class="project-card">
+                    <img
+                        class="project-image"
+                        src="Images/BrowserPrivacy.avif"
+                        alt="Browser Privacy"
+                    >
+                    <div class="project-content">
+                        <h3 class="project-title">Browser Privacy</h3>
+                        <p class="project-description">
+                            Browser ranking based on their privacy and security features. (Source: privacytests.org)
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://msrsaditya.github.io/Browser-Privacy-Ranking" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/Browser-Privacy-Ranking" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog -->
+                <div class="project-card">
+                    <img
+                        class="project-image"
+                        src="Images/Blog.avif"
+                        alt="Blog Preview"
+                    >
+                    <div class="project-content">
+                        <h3 class="project-title">Blog</h3>
+                        <p class="project-description">
+                            Automated (opinionated) workflow for writing my blog.
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://msrsaditya.github.io/Blog" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/Blog" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Eisenhower -->
+                <div class="project-card">
+                    <img
+                        class="project-image"
+                        src="Images/Eisenhower.avif"
+                        alt="Eisenhower Task Manager Preview"
+                    >
+                    <div class="project-content">
+                        <h3 class="project-title">Eisenhower Matrix</h3>
+                        <p class="project-description">
+                            Prioritize your tasks using Eisenhower matrix.
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://msrsaditya.github.io/Eisenhower-Matrix" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/Eisenhower-Matrix" target="_blank" class="button">Code</a>
                         </div>
                     </div>
                 </div>
                 <!-- Expense Tracker -->
                 <div class="project-card">
-                    <iframe class="project-iframe" src="https://msrsaditya.github.io/Expense-Tracker" loading="lazy" title="Expense Tracker"></iframe>
+                    <img
+                        class="project-image"
+                        src="Images/ExpenseTracker.avif"
+                        alt="Expense Tracker Preview"
+                    >
                     <div class="project-content">
                         <h3 class="project-title">Expense Tracker</h3>
                         <p class="project-description">
-                            CSV based expense tracker with a lots of data analysis and insights
+                            CSV based expense tracker to track your expenses seamlessly.
                         </p>
                         <div class="project-buttons">
                             <a href="https://msrsaditya.github.io/Expense-Tracker" target="_blank" class="button">Website</a>
@@ -705,31 +803,39 @@ html {
                         </div>
                     </div>
                 </div>
-                <!-- Date Calculator -->
+                <!-- JNTU Calculator -->
                 <div class="project-card">
-                    <iframe class="project-iframe" src="https://msrsaditya.github.io/datecalc" loading="lazy" title="Date Calculator"></iframe>
+                    <img
+                        class="project-image"
+                        src="Images/JNTUCalc.avif"
+                        alt="JNTU Calculator Preview"
+                    >
                     <div class="project-content">
-                        <h3 class="project-title">Date Calculator</h3>
+                        <h3 class="project-title">JNTU Calculator</h3>
                         <p class="project-description">
-                            Intuitive date to date calculator
+                            Calculate your overall CGPA and percentage using JNTU approved method.
                         </p>
                         <div class="project-buttons">
-                            <a href="https://msrsaditya.github.io/datecalc" target="_blank" class="button">Website</a>
-                            <a href="https://github.com/msrsaditya/datecalc" target="_blank" class="button">Code</a>
+                            <a href="https://msrsaditya.github.io/JNTU-Calculator" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/JNTU-Calculator" target="_blank" class="button">Code</a>
                         </div>
                     </div>
                 </div>
-                <!-- Eisenhower -->
+                <!-- Date Calculator -->
                 <div class="project-card">
-                    <iframe class="project-iframe" src="https://msrsaditya.github.io/Eisenhower" loading="lazy" title="Eisenhower"></iframe>
+                    <img
+                        class="project-image"
+                        src="Images/DateCalc.avif"
+                        alt="Date Calculator Preview"
+                    >
                     <div class="project-content">
-                        <h3 class="project-title">Eisenhower</h3>
+                        <h3 class="project-title">Date Calculator</h3>
                         <p class="project-description">
-                            Eisenhower matrix for task prioritization and productivity
+                            The right (opinionated) way to calculate dates.
                         </p>
                         <div class="project-buttons">
-                            <a href="https://msrsaditya.github.io/Eisenhower" target="_blank" class="button">Website</a>
-                            <a href="https://github.com/msrsaditya/Eisenhower" target="_blank" class="button">Code</a>
+                            <a href="https://msrsaditya.github.io/Date-Calculator" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/Date-Calculator" target="_blank" class="button">Code</a>
                         </div>
                     </div>
                 </div>
