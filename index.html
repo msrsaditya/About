@@ -5,15 +5,554 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shashank Aditya - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+:root {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-card: #1f1f1f;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --text-muted: #888888;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --accent-glow: rgba(59, 130, 246, 0.2);
+    --border: #333333;
+    --border-hover: rgba(59, 130, 246, 0.3);
+    --shadow: rgba(0, 0, 0, 0.4);
+    --shadow-glow: rgba(59, 130, 246, 0.15);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius: 16px;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, #0d0d0d 50%, var(--bg-primary) 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+/* Animated background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.02) 0%, transparent 50%);
+    z-index: -1;
+    animation: backgroundShift 20s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundShift {
+    0% { transform: translateX(-20px) translateY(-20px); }
+    100% { transform: translateX(20px) translateY(20px); }
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(26, 26, 26, 0.95) 100%);
+    backdrop-filter: blur(20px);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin-bottom: var(--spacing-md);
+    border: 3px solid var(--accent);
+    transition: var(--transition);
+    object-fit: cover;
+    position: relative;
+    box-shadow: 0 8px 32px var(--shadow-glow);
+    animation: profilePulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes profilePulse {
+    0% { box-shadow: 0 8px 32px var(--shadow-glow); }
+    100% { box-shadow: 0 12px 48px rgba(59, 130, 246, 0.25); }
+}
+
+.profile-img:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 16px 64px rgba(59, 130, 246, 0.3);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.025em;
+    background: linear-gradient(135deg, var(--text-primary) 0%, rgba(255, 255, 255, 0.8) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    0% { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1)); }
+    100% { filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2)); }
+}
+
+.quote {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+    font-weight: 400;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    font-style: italic;
+    animation: fadeIn 1.2s ease-out 0.3s both;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    animation: fadeIn 1.4s ease-out 0.6s both;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(31, 31, 31, 0.8) 100%);
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-size: 1.2rem;
+    transition: var(--transition);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: var(--transition);
+}
+
+.social-icon:hover::before {
+    left: 100%;
+}
+
+.social-icon:hover {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--shadow-glow);
+    border-color: var(--accent);
+}
+
+/* Main Content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.section {
+    margin-bottom: var(--spacing-xl);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+    letter-spacing: -0.025em;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+    border-radius: 2px;
+    animation: expandLine 0.8s ease-out 0.5s both;
+}
+
+@keyframes expandLine {
+    0% { width: 0; }
+    100% { width: 60px; }
+}
+
+/* Projects Grid */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: var(--spacing-lg);
+    animation: staggerFadeIn 1s ease-out;
+}
+
+@keyframes staggerFadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.project-card {
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(31, 31, 31, 0.9) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: var(--transition);
+    height: fit-content;
+    backdrop-filter: blur(10px);
+    position: relative;
+    animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: var(--transition);
+    pointer-events: none;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px var(--shadow);
+    border-color: var(--border-hover);
+}
+
+.project-iframe {
+    width: 100%;
+    height: 280px;
+    border: none;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, #151515 100%);
+    transition: var(--transition);
+    object-fit: cover;
+}
+
+.project-iframe:hover {
+    transform: scale(1.02);
+}
+
+.project-content {
+    padding: var(--spacing-md);
+    position: relative;
+}
+
+.project-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+    letter-spacing: -0.025em;
+    transition: var(--transition);
+}
+
+.project-card:hover .project-title {
+    color: var(--accent);
+}
+
+.project-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+    transition: var(--transition);
+}
+
+.project-card:hover .project-description {
+    color: var(--text-primary);
+}
+
+.project-buttons {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.button {
+    flex: 1;
+    text-align: center;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+    color: white;
+    padding: 0.75rem var(--spacing-sm);
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: var(--transition);
+}
+
+.button:hover::before {
+    left: 100%;
+}
+
+.button:hover {
+    background: linear-gradient(135deg, var(--accent-hover) 0%, #1d4ed8 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--shadow-glow);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .profile-container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .projects-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .social-icons {
+        gap: var(--spacing-xs);
+    }
+    
+    .social-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+    
+    .project-iframe {
+        height: 240px;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-buttons {
+        flex-direction: column;
+    }
+    
+    .button {
+        flex: none;
+    }
+    
+    .profile-img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    .quote {
+        font-size: 1rem;
+    }
+    
+    .project-iframe {
+        height: 200px;
+    }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.social-icon:focus,
+.button:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Loading States */
+.project-iframe[src=""] {
+    background: linear-gradient(90deg, var(--bg-secondary) 25%, rgba(255,255,255,0.05) 50%, var(--bg-secondary) 75%);
+    background-size: 200% 100%;
+    animation: loading 2s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--border) 0%, var(--text-muted) 100%);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--text-muted) 0%, var(--accent) 100%);
+}
+
+/* Additional professional animations */
+.project-card:nth-child(odd) {
+    animation-delay: 0.1s;
+}
+
+.project-card:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+/* Hover glow effect for cards */
+.project-card {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-card:hover {
+    box-shadow: 0 16px 48px var(--shadow), 0 0 0 1px var(--border-hover);
+}
+    </style>
 </head>
 <body>
     <header>
-        <div class="background-animation" id="background-animation"></div>
         <div class="profile-container">
-            <img src="Profile.png" alt="Shashank Aditya" class="profile-img">
+            <img src="https://avatars.githubusercontent.com/u/141167667" alt="Shashank Aditya" class="profile-img">
             <h1>Shashank Aditya</h1>
-            <p class="subtitle">IT Student @ JNTU-GV<br>Aspiring Software Developer</p>
+            <p class="quote">Part-Time Philosopher. Full-Time Tinkerer. Every Time Weirder.</p>
             <div class="social-icons">
                 <a href="mailto:msrsaditya@gmail.com" class="social-icon" title="Email">
                     <i class="fas fa-envelope"></i>
@@ -21,14 +560,8 @@
                 <a href="https://github.com/msrsaditya" class="social-icon" target="_blank" title="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://linkedin.com/in/msrsaditya" class="social-icon" target="_blank" title="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
                 <a href="https://x.com/msrsaditya" class="social-icon" target="_blank" title="Twitter/X">
                     <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://youtube.com/@msrsaditya" class="social-icon" target="_blank" title="YouTube">
-                    <i class="fab fa-youtube"></i>
                 </a>
                 <a href="https://leetcode.com/msrsaditya" class="social-icon" target="_blank" title="LeetCode">
                     <i class="fas fa-code"></i>
@@ -36,52 +569,172 @@
                 <a href="https://hackerrank.com/msrsaditya" class="social-icon" target="_blank" title="HackerRank">
                     <i class="fab fa-hackerrank"></i>
                 </a>
-                <a href="https://medium.com/@msrsaditya" class="social-icon" target="_blank" title="Medium">
-                    <i class="fab fa-medium-m"></i>
-                </a>
                 <a href="https://Instagram.com/shashankfied" class="social-icon" target="_blank" title="Instagram">
                     <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://reddit.com/user/msrsaditya" class="social-icon" target="_blank" title="Reddit">
-                    <i class="fab fa-reddit-alien"></i>
                 </a>
             </div>
         </div>
     </header>
     <main class="container">
-        <section id="about" class="section">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <p>I am a final year Information Technology student at <a href="https://jntugv.edu.in" target="_blank" class="highlight">JNTU-GV</a> who spends time building things, breaking them apart, and understanding how they work. When I'm not diving into code, you'll find me exploring the intersections of AI, mathematics, and data science.</p>
-                <br>
-                <p>I document my journey through <a href="https://medium.com/@msrsaditya" target="_blank" class="highlight">Technical Articles</a>, share insights on my <a href="https://www.youtube.com/@msrsaditya" target="_blank" class="highlight">YouTube Channel</a>, and challenge myself with algorithmic problems on <a href="https://leetcode.com/u/msrsaditya" target="_blank" class="highlight">LeetCode</a>. Between coding sessions and building websites, you might catch me in a game of <a href="https://www.chess.com/member/msrsaditya" target="_blank" class="highlight">Chess</a> or tinkering with a new technology.</p>
-                <br>
-                <p>You can checkout my Resume <a href="https://github.com/msrsaditya/Documents/raw/main/Aditya_SDE_Resume.pdf" target="_blank" class="highlight">here</a>. I am open to hiring.</p>
-            </div>
-        </section>
-        <section id="skills" class="section">
-            <h2 class="section-title">Skills</h2>
-            <div class="interests">
-                <span class="interest-tag">Python</span>
-                <span class="interest-tag">C</span>
-                <span class="interest-tag">Java</span>
-                <span class="interest-tag">Bash</span>
-                <span class="interest-tag">HTML</span>
-                <span class="interest-tag">CSS</span>
-                <span class="interest-tag">JavaScript</span>
-                <span class="interest-tag">Flask</span>
-                <span class="interest-tag">SQL</span>
-                <span class="interest-tag">Numpy</span>
-                <span class="interest-tag">Pandas</span>
-                <span class="interest-tag">Matplotlib</span>
-                <span class="interest-tag">Linux</span>
-                <span class="interest-tag">Git</span>
-                <span class="interest-tag">Vim</span>
-                <span class="interest-tag">Markdown</span>
-                <span class="interest-tag">LaTeX</span>
+        <section id="projects" class="section">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-container">
+                <!-- Editor -->
+                <div class="project-card">
+                    <iframe class="project-iframe" src="https://msrsaditya.github.io/editor" loading="lazy" title="Editor preview"></iframe>
+                    <div class="project-content">
+                        <h3 class="project-title">Editor</h3>
+                        <p class="project-description">
+                            Developer friendly python editor and interpreter running in WASM
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://msrsaditya.github.io/editor" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/editor" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Live Markdown Preview -->
+                <div class="project-card">
+                    <iframe class="project-iframe" src="https://msrsaditya.github.io/livemarkdownpreview" loading="lazy" title="Live Markdown Preview"></iframe>
+                    <div class="project-content">
+                        <h3 class="project-title">Live Markdown Preview</h3>
+                        <p class="project-description">
+                            Real-time Markdown editor preview
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://msrsaditya.github.io/livemarkdownpreview" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/livemarkdownpreview" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mermaid Visualizer -->
+                <div class="project-card">
+                    <iframe class="project-iframe" src="https://msrsaditya.github.io/Mermaid-Visualizer" loading="lazy" title="Mermaid Visualizer"></iframe>
+                    <div class="project-content">
+                        <h3 class="project-title">Mermaid Visualizer</h3>
+                        <p class="project-description">
+                            Easy way to visualize and download Mermaid diagrams as SVG
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://msrsaditya.github.io/Mermaid-Visualizer" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/Mermaid-Visualizer" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Browser Privacy -->
+                <div class="project-card">
+                    <iframe class="project-iframe" src="https://msrsaditya.github.io/BrowserPrivacy" loading="lazy" title="Browser Privacy"></iframe>
+                    <div class="project-content">
+                        <h3 class="project-title">Browser Privacy</h3>
+                        <p class="project-description">
+                            Browser ranking based on their privacy and security (source: privacytests.org)
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://msrsaditya.github.io/BrowserPrivacy" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/BrowserPrivacy" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog -->
+                <div class="project-card">
+                    <iframe class="project-iframe" src="https://msrsaditya.github.io/blog" loading="lazy" title="Blog"></iframe>
+                    <div class="project-content">
+                        <h3 class="project-title">Blog</h3>
+                        <p class="project-description">
+                            Personal blog to share stories
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://msrsaditya.github.io/blog" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/blog" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
+               <!-- Distro Meter -->
+                <div class="project-card">
+                    <img class="project-iframe" src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Distro Meter preview">
+                    <div class="project-content">
+                        <h3 class="project-title">Distro Meter</h3>
+                        <p class="project-description">
+                            Data analysis and insights on Linux distro's subreddit popularity
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://distrometer.streamlit.app" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/DistroMeter" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Local Transfer -->
+                <div class="project-card">
+                    <img class="project-iframe" src="https://upload.wikimedia.org/wikipedia/commons/1/13/Netcat.png" alt="Local Transfer preview">
+                    <div class="project-content">
+                        <h3 class="project-title">Local Transfer</h3>
+                        <p class="project-description">
+                            Fast and efficient netcat based raw TCP file transfer
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://github.com/msrsaditya/Local-Transfer" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/Local-Transfer" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- JNTU Calculator -->
+                <div class="project-card">
+                    <iframe class="project-iframe" src="https://msrsaditya.github.io/JNTU-Calc" loading="lazy" title="JNTU Calculator"></iframe>
+                    <div class="project-content">
+                        <h3 class="project-title">JNTU Calculator</h3>
+                        <p class="project-description">
+                            JNTU college CGPA and percentage calculator
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://msrsaditya.github.io/JNTU-Calc" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/JNTU-Calc" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Expense Tracker -->
+                <div class="project-card">
+                    <iframe class="project-iframe" src="https://msrsaditya.github.io/Expense-Tracker" loading="lazy" title="Expense Tracker"></iframe>
+                    <div class="project-content">
+                        <h3 class="project-title">Expense Tracker</h3>
+                        <p class="project-description">
+                            CSV based expense tracker with a lots of data analysis and insights
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://msrsaditya.github.io/Expense-Tracker" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/Expense-Tracker" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Date Calculator -->
+                <div class="project-card">
+                    <iframe class="project-iframe" src="https://msrsaditya.github.io/datecalc" loading="lazy" title="Date Calculator"></iframe>
+                    <div class="project-content">
+                        <h3 class="project-title">Date Calculator</h3>
+                        <p class="project-description">
+                            Intuitive date to date calculator
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://msrsaditya.github.io/datecalc" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/datecalc" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Eisenhower -->
+                <div class="project-card">
+                    <iframe class="project-iframe" src="https://msrsaditya.github.io/Eisenhower" loading="lazy" title="Eisenhower"></iframe>
+                    <div class="project-content">
+                        <h3 class="project-title">Eisenhower</h3>
+                        <p class="project-description">
+                            Eisenhower matrix for task prioritization and productivity
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://msrsaditya.github.io/Eisenhower" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/Eisenhower" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-    <script src="script.js"></script>
 </body>
 </html>
