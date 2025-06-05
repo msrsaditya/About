@@ -46,7 +46,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Animated background */
 body::before {
     content: '';
     position: fixed;
@@ -65,7 +64,6 @@ body::before {
     100% { transform: translateX(20px) translateY(20px); }
 }
 
-/* Header Styles */
 header {
     background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(26, 26, 26, 0.95) 100%);
     backdrop-filter: blur(20px);
@@ -227,7 +225,6 @@ h1 {
     border-color: var(--accent);
 }
 
-/* Main Content */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -266,7 +263,6 @@ h1 {
     100% { width: 60px; }
 }
 
-/* Projects Grid */
 .projects-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
@@ -416,7 +412,6 @@ h1 {
     transform: translateY(0);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .container {
         padding: var(--spacing-lg) var(--spacing-sm);
@@ -492,7 +487,6 @@ h1 {
     }
 }
 
-/* Accessibility Improvements */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
@@ -507,7 +501,6 @@ h1 {
     outline-offset: 2px;
 }
 
-/* Loading States */
 .project-iframe[src=""],
 .project-image[src=""] {
     background: linear-gradient(90deg, var(--bg-secondary) 25%, rgba(255,255,255,0.05) 50%, var(--bg-secondary) 75%);
@@ -520,7 +513,6 @@ h1 {
     100% { background-position: -200% 0; }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 12px;
 }
@@ -538,7 +530,6 @@ h1 {
     background: linear-gradient(180deg, var(--text-muted) 0%, var(--accent) 100%);
 }
 
-/* Additional professional animations */
 .project-card:nth-child(odd) {
     animation-delay: 0.1s;
 }
@@ -547,7 +538,6 @@ h1 {
     animation-delay: 0.2s;
 }
 
-/* Hover glow effect for cards */
 .project-card {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
@@ -608,6 +598,24 @@ h1 {
                         </div>
                     </div>
                 </div>
+                <!-- Watch party -->
+                <div class="project-card">
+                    <img
+                        class="project-image"
+                        src="Images/Watch-Party.avif"
+                        alt="Watch Party Preview"
+                    >
+                    <div class="project-content">
+                        <h3 class="project-title">Watch Party</h3>
+                        <p class="project-description">
+                            Fully client side WebRTC based video synchronizer to watch videos together with your loved ones.
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://msrsaditya.github.io/Watch-Party" target="_blank" class="button">Website</a>
+                            <a href="https://github.com/msrsaditya/Watch-Party" target="_blank" class="button">Code</a>
+                        </div>
+                    </div>
+                </div>
                 <!-- Image Converter -->
                 <div class="project-card">
                     <img
@@ -648,7 +656,7 @@ h1 {
                 <div class="project-card">
                     <img
                         class="project-image"
-                        src="Images/LiveMarkdownPreview.avif"
+                        src="Images/Markdown-Live-Preview.avif"
                         alt="Live Markdown Preview"
                     >
                     <div class="project-content">
@@ -666,7 +674,7 @@ h1 {
                 <div class="project-card">
                     <img
                         class="project-image"
-                        src="Images/MermaidVisualizer.avif"
+                        src="Images/Mermaid-Visualizer.avif"
                         alt="Mermaid Visualizer"
                     >
                     <div class="project-content">
@@ -684,7 +692,7 @@ h1 {
                 <div class="project-card">
                     <img
                         class="project-image"
-                        src="Images/Linux.avif"
+                        src="Images/DistroMeter.avif"
                         alt="Distro Meter Preview"
                     >
                     <div class="project-content">
@@ -702,7 +710,7 @@ h1 {
                 <div class="project-card">
                     <img
                         class="project-image"
-                        src="Images/LocalTransfer.avif"
+                        src="Images/Local-Transfer.avif"
                         alt="Local Transfer Preview"
                     >
                     <div class="project-content">
@@ -736,7 +744,7 @@ h1 {
                 <div class="project-card">
                     <img
                         class="project-image"
-                        src="Images/BrowserPrivacy.avif"
+                        src="Images/Browser-Privacy-Ranking.avif"
                         alt="Browser Privacy"
                     >
                     <div class="project-content">
@@ -772,7 +780,7 @@ h1 {
                 <div class="project-card">
                     <img
                         class="project-image"
-                        src="Images/Eisenhower.avif"
+                        src="Images/Eisenhower-Matrix.avif"
                         alt="Eisenhower Task Manager Preview"
                     >
                     <div class="project-content">
@@ -790,7 +798,7 @@ h1 {
                 <div class="project-card">
                     <img
                         class="project-image"
-                        src="Images/ExpenseTracker.avif"
+                        src="Images/Expense-Tracker.avif"
                         alt="Expense Tracker Preview"
                     >
                     <div class="project-content">
@@ -808,7 +816,7 @@ h1 {
                 <div class="project-card">
                     <img
                         class="project-image"
-                        src="Images/JNTUCalc.avif"
+                        src="Images/JNTU-Calculator.avif"
                         alt="JNTU Calculator Preview"
                     >
                     <div class="project-content">
@@ -826,7 +834,7 @@ h1 {
                 <div class="project-card">
                     <img
                         class="project-image"
-                        src="Images/DateCalc.avif"
+                        src="Images/Date-Calculator.avif"
                         alt="Date Calculator Preview"
                     >
                     <div class="project-content">
